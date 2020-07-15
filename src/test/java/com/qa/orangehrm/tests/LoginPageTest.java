@@ -1,31 +1,13 @@
 package com.qa.orangehrm.tests;
 
-import java.util.Properties;
-
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.qa.orangehrm.base.BasePage;
-import com.qa.orangehrm.pages.LoginPage;
+import com.qa.orangehrm.base.BaseTest;
 import com.qa.orangehrm.utils.Constants;
 
-public class LoginPageTest {
-	WebDriver driver;
-	Properties prop;
+public class LoginPageTest extends BaseTest {
 	
-	BasePage basepage;
-	LoginPage loginpage;
-	
-	@BeforeTest
-	public void setUp() {
-		basepage = new BasePage();
-		prop = basepage.initilize_prop();
-		driver = basepage.init_driver(prop);
-		loginpage = new LoginPage(driver);	
-	}
 	
 	@Test(priority=2,description = "Verify Login Page Title")
 	public void verifyLoginPageTitleTest() {
@@ -45,14 +27,7 @@ public class LoginPageTest {
 		loginpage.doLogin(prop.getProperty("username"),prop.getProperty("password"));
 		
 	}
-	
-	
-	
-	
-	
-	@AfterTest
-	public void tearDown() {
-		driver.quit();
-	}
 
+	
+	
 }

@@ -5,9 +5,11 @@
     <classes>
       <class name="com.qa.orangehrm.tests.HomePageTest">
         <methods>
-          <include name="HomepageBannerTest"/>
-          <include name="setUp"/>
+          <include name="loggedInUserTest"/>
           <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="HomepageDashboardTest"/>
+          <include name="homeSetup"/>
         </methods>
       </class> <!-- com.qa.orangehrm.tests.HomePageTest -->
     </classes>

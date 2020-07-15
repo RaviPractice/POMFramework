@@ -1,36 +1,22 @@
 package com.qa.orangehrm.tests;
 
-import java.util.Properties;
-
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.qa.orangehrm.base.BasePage;
+import com.qa.orangehrm.base.BaseTest;
 import com.qa.orangehrm.pages.HomePage;
-import com.qa.orangehrm.pages.LoginPage;
 import com.qa.orangehrm.utils.Constants;
 
-public class HomePageTest {
+public class HomePageTest extends BaseTest {
 	
-	WebDriver driver;
-	Properties prop;
-	
-	BasePage basepage;
-	LoginPage loginpage;
 	HomePage homepage;
 	
-	@BeforeTest
-	public void setUp() {
-		basepage = new BasePage();
-		prop = basepage.initilize_prop();
-		driver = basepage.init_driver(prop);
-		loginpage = new LoginPage(driver);
-		homepage = loginpage.doLogin(prop.getProperty("username"),prop.getProperty("password"));
-		
+	@BeforeClass
+	public void homeSetup() {
+	homepage = loginpage.doLogin(prop.getProperty("username"),prop.getProperty("password"));
 	}
+	
 	
 	@Test(priority=2,description="Verifying homepage title")
 	public void verifHomePageTitleTest() {
@@ -53,12 +39,5 @@ public class HomePageTest {
 		System.out.println("homepage header is :"+user);
 		Assert.assertEquals(user,Constants.LOGGED_USER,"Logged user is not matched..");
 	}
-
-	@AfterTest
-	public void tearDown() {
-		driver.quit();
-	}
-
-	
 
 }

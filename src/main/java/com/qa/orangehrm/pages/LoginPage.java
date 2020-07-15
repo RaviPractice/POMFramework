@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.qa.orangehrm.base.BasePage;
+import com.qa.orangehrm.utils.Constants;
+import com.qa.orangehrm.utils.ElementUtil;
 
 public class LoginPage extends BasePage {
 	
@@ -19,24 +21,31 @@ public class LoginPage extends BasePage {
 	// 2.create constructor of LoginPage
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
+		elementutil = new ElementUtil(this.driver);
+		
 		
 	}
 	
 	// 3. page actions :Methods
 	
 	public String getLoginPageTitle() {
-		return driver.getTitle();
+		 return elementutil.waitForTitleToBePresent(Constants.LOGIN_PAGE_TITLE, 10);
+		
 	}
 	
 	public boolean verifForgotpasswordLink() {
-		return driver.findElement(forgotpswdLink).isDisplayed();
+		return	elementutil.doIsDisplayed(forgotpswdLink);
+		
+		
 	}
 	
 	public HomePage doLogin(String userName,String pswd) {
-		driver.findElement(this.username).sendKeys(userName);
-		driver.findElement(this.password).sendKeys(pswd);
-		driver.findElement(this.loginButton).click();
 		
+		elementutil.waitForElementToBeVisible(username, 5);
+		elementutil.doSendKeys(this.username, userName);
+		elementutil.doSendKeys(this.password, pswd);
+		elementutil.doClick(loginButton);
+
 		return new HomePage(driver);
 		
 		

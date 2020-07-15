@@ -11,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import com.qa.orangehrm.utils.ElementUtil;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
@@ -20,8 +22,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
  */
 
 public class BasePage {
-	WebDriver driver;
-	Properties prop;
+	public WebDriver driver;
+	public Properties prop;
+	public ElementUtil elementutil;
 	
 	/**
 	 * this method is used to initilize the webdriver on the basis of driver
