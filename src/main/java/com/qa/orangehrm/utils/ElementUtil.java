@@ -35,13 +35,16 @@ public class ElementUtil extends BasePage {
 		try {
 			System.out.println("locator is : " + locator);
 			element = driver.findElement(locator);
+			//every element will be flashing
+			//jsUtil.flash(element);
+			
 			if (prop.getProperty("highlight").equalsIgnoreCase("yes")) {
 				jsUtil.flash(element);
 			}
 			System.out.println("WebElement is created successfully : " + locator);
 
 		} catch (Exception e) {
-		//	System.out.println("some exception got occurred with this locator: " + locator);
+		System.out.println("some exception got occurred with this locator: " + locator);
 		}
 		return element;
 	}

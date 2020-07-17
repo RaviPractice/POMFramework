@@ -2,7 +2,13 @@
 
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-	<suite name="Orange HRM Regression Suite" thread-count="2" parallel ="tests" verbose="3">
+	<suite name="Orange HRM Regression Suite" verbose="3">
+	
+	 <listeners>
+		<!--  <listener class-name="com.qa.orangehrm.listeners.ExtentReportListener" />  -->
+		 <listener class-name="com.qa.orangehrm.listeners.TesultsListener" /> 
+		 
+	</listeners> 
 	
 	<test name="Orange HRM Login page Test">
 		<classes>
@@ -10,11 +16,11 @@
 		</classes>
 	</test>
 	
-	<test name="Orange HRM Login page Test">
+	<!-- <test name="Orange HRM Home page Test">
 		<classes>
 			<class name="com.qa.orangehrm.tests.HomePageTest" />
 		</classes>
 	</test>
-
+ -->
 	
 </suite> 

@@ -1,15 +1,20 @@
 package com.qa.orangehrm.base;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.io.FileHandler;
 
 import com.qa.orangehrm.utils.ElementUtil;
 
@@ -26,6 +31,15 @@ public class BasePage {
 	public Properties prop;
 	public ElementUtil elementutil;
 	
+	
+	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
+	
+	
+	public static  synchronized WebDriver getDriver() {
+		return tlDriver.get();
+	}
+
+	
 	/**
 	 * this method is used to initilize the webdriver on the basis of driver
 	 * @param broeserName
@@ -37,31 +51,38 @@ public class BasePage {
 		String browserName = prop.getProperty("browser");
 		
 		if(browserName.equalsIgnoreCase("chrome")) {
+			//System.setProperty("webdriver.chrome.driver","D:\\MukeshAutomation\\drivers\\chrome\\chromedriver.exe");
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
+			tlDriver.set(new ChromeDriver());
+			
+			//driver = new ChromeDriver();
 			
 		}
 		else if(browserName.equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver();
+			tlDriver.set(new FirefoxDriver());
+			//System.setProperty("webdriver.gecko.driver", "D:\\MukeshAutomation\\drivers\\geckodriver.exe");
+			//driver = new FirefoxDriver();
 			
 		}
 		else if(browserName.equalsIgnoreCase("ie")) {
 			WebDriverManager.iedriver().setup();
-			driver = new InternetExplorerDriver();
+			tlDriver.set(new InternetExplorerDriver());
+			//System.setProperty("webdriver.ie.driver", "D:\\MukeshAutomation\\drivers\\IEDriverServer-32.exe");
+			//driver = new InternetExplorerDriver();
 			
 		}
 		else {
 			System.out.println("please pass valid browser name :"+browserName);
 		}
 		
-		driver.manage().deleteAllCookies();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		driver.get(prop.getProperty("url"));
-		driver.manage().timeouts().pageLoadTimeout(10,TimeUnit.SECONDS);
+		getDriver().manage().deleteAllCookies();
+		getDriver().manage().window().maximize();
+		getDriver().manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		getDriver().get(prop.getProperty("url"));
+		getDriver().manage().timeouts().pageLoadTimeout(10,TimeUnit.SECONDS);
 		
-		return driver;
+		return getDriver();
 		
 	}
 	/**
@@ -81,6 +102,22 @@ public class BasePage {
 		}
 		return prop;
 		
+	}
+	/**
+	 * this method is used to take the screenshot
+	 */
+	
+	public String getScreenshot() {
+		File src = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
+		String path = System.getProperty("user.dir") + "/screenshots/" + System.currentTimeMillis() + ".png";
+		File destination = new File(path);
+		try {
+			FileUtils.copyFile(src, destination);
+			//FileHandler.copy(src, destination);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return path;
 	}
 	
 

@@ -23,6 +23,7 @@ public class AdminPage extends BasePage {
 	 By passWord = By.xpath("//label[text()='Password']//following::input[1]");
 	 By cnfPassword = By.xpath("//label[text()='Confirm Password']//following::input[1]");
 	 By saveButton = By.xpath("//input[@value='Save']");
+	 By success = By.xpath("//div[contains(text(),'Successfully')]");
 	 
 		
 		// 2.create constructor of LoginPage
@@ -53,7 +54,10 @@ public class AdminPage extends BasePage {
 			 
 				elementutil.doClick(saveButton);
 				
-				elementutil.waitForElementToBeClickable(saveButton, 10);
+				//elementutil.waitForElementToBeClickable(saveButton, 5);
+				elementutil.waitForElementToBeVisible(success, 10);
+				
+				
 		}
 	
 	

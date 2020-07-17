@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="22003" started-at="2020-07-15T18:35:47Z" finished-at="2020-07-15T18:36:09Z">
+  <suite name="Default suite" duration-ms="23496" started-at="2020-07-17T10:50:15Z" finished-at="2020-07-17T10:50:38Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="22003" started-at="2020-07-15T18:35:47Z" finished-at="2020-07-15T18:36:09Z">
-      <class name="com.qa.orangehrm.tests.AdminPageTest">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.orangehrm.tests.AdminPageTest@5c3bd550]" name="setUp" is-config="true" duration-ms="10455" started-at="2020-07-15T18:35:47Z" finished-at="2020-07-15T18:35:58Z">
+    <test name="Default test" duration-ms="23496" started-at="2020-07-17T10:50:15Z" finished-at="2020-07-17T10:50:38Z">
+      <class name="com.qa.orangehrm.tests.LoginPageTest">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.qa.orangehrm.tests.LoginPageTest@4a9cc6cb]" name="setUp" is-config="true" duration-ms="18891" started-at="2020-07-17T10:50:15Z" finished-at="2020-07-17T10:50:34Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="adminSetup()[pri:0, instance:com.qa.orangehrm.tests.AdminPageTest@5c3bd550]" name="adminSetup" is-config="true" duration-ms="7329" started-at="2020-07-15T18:35:58Z" finished-at="2020-07-15T18:36:05Z">
+        <test-method status="PASS" signature="verifyForgotpswdLinkTest()[pri:1, instance:com.qa.orangehrm.tests.LoginPageTest@4a9cc6cb]" name="verifyForgotpswdLinkTest" duration-ms="723" started-at="2020-07-17T10:50:34Z" description="Verify ForgotpasswordLink" finished-at="2020-07-17T10:50:34Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- adminSetup -->
-        <test-method status="PASS" signature="verifyAdminPageTitleTest()[pri:1, instance:com.qa.orangehrm.tests.AdminPageTest@5c3bd550]" name="verifyAdminPageTitleTest" duration-ms="36" started-at="2020-07-15T18:36:05Z" finished-at="2020-07-15T18:36:05Z">
+        </test-method> <!-- verifyForgotpswdLinkTest -->
+        <test-method status="PASS" signature="verifyLoginPageTitleTest()[pri:2, instance:com.qa.orangehrm.tests.LoginPageTest@4a9cc6cb]" name="verifyLoginPageTitleTest" duration-ms="65" started-at="2020-07-17T10:50:35Z" description="Verify Login Page Title" finished-at="2020-07-17T10:50:35Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyAdminPageTitleTest -->
-        <test-method status="PASS" signature="createUserTest()[pri:2, instance:com.qa.orangehrm.tests.AdminPageTest@5c3bd550]" name="createUserTest" duration-ms="3300" started-at="2020-07-15T18:36:05Z" finished-at="2020-07-15T18:36:09Z">
+        </test-method> <!-- verifyLoginPageTitleTest -->
+        <test-method status="PASS" signature="loginTest()[pri:3, instance:com.qa.orangehrm.tests.LoginPageTest@4a9cc6cb]" name="loginTest" duration-ms="1895" started-at="2020-07-17T10:50:35Z" finished-at="2020-07-17T10:50:37Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- createUserTest -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.qa.orangehrm.tests.AdminPageTest@5c3bd550]" name="tearDown" is-config="true" duration-ms="830" started-at="2020-07-15T18:36:09Z" finished-at="2020-07-15T18:36:09Z">
+        </test-method> <!-- loginTest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.qa.orangehrm.tests.LoginPageTest@4a9cc6cb]" name="tearDown" is-config="true" duration-ms="1364" started-at="2020-07-17T10:50:37Z" finished-at="2020-07-17T10:50:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.qa.orangehrm.tests.AdminPageTest -->
+      </class> <!-- com.qa.orangehrm.tests.LoginPageTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

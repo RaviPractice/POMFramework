@@ -2,12 +2,14 @@ package com.qa.orangehrm.tests;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.qa.orangehrm.base.BaseTest;
 import com.qa.orangehrm.pages.AdminPage;
 import com.qa.orangehrm.pages.HomePage;
 import com.qa.orangehrm.utils.Constants;
+import com.qa.orangehrm.utils.ExcelUtil;
 
 public class AdminPageTest extends BaseTest {
 	HomePage homepage;
@@ -28,9 +30,17 @@ public class AdminPageTest extends BaseTest {
 		
 	}
 	
-	@Test(priority=2)
-	public void createUserTest() {
-		adminpage.createNewUser("John Smith", "Mohit_1234", "abcd1234", "abcd1234");
+	@DataProvider
+	public Object[][] createUsersTest() {
+		Object[][] data = ExcelUtil.getTestData(Constants.USERS_SHEET_NAME);
+		return data;
+		
+	}
+
+	
+	@Test(priority=2,dataProvider = "createUsersTest",enabled = false)
+	public void createUserTest(String empName,String userName,String pswd,String cnfpswd) {
+		adminpage.createNewUser(empName,userName,pswd,cnfpswd);
 		
 	}
 	
