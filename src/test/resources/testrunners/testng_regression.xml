@@ -4,11 +4,11 @@
 
 	<suite name="Orange HRM Regression Suite" verbose="3">
 	
-	 <listeners>
-		<!--  <listener class-name="com.qa.orangehrm.listeners.ExtentReportListener" />  -->
+	<!--  <listeners>
+		 <listener class-name="com.qa.orangehrm.listeners.ExtentReportListener" /> 
 		 <listener class-name="com.qa.orangehrm.listeners.TesultsListener" /> 
 		 
-	</listeners> 
+	</listeners>  -->
 	
 	<test name="Orange HRM Login page Test">
 		<classes>

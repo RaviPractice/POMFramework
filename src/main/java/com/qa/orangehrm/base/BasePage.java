@@ -17,6 +17,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.io.FileHandler;
 
 import com.qa.orangehrm.utils.ElementUtil;
+import com.qa.orangehrm.utils.OptionsManager;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -30,6 +31,7 @@ public class BasePage {
 	public WebDriver driver;
 	public Properties prop;
 	public ElementUtil elementutil;
+	public OptionsManager optionsmanager;
 	
 	
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
@@ -47,20 +49,21 @@ public class BasePage {
 	 */
 	
 	public WebDriver init_driver(Properties prop) {
+		optionsmanager = new OptionsManager(prop);
 		
 		String browserName = prop.getProperty("browser");
 		
 		if(browserName.equalsIgnoreCase("chrome")) {
 			//System.setProperty("webdriver.chrome.driver","D:\\MukeshAutomation\\drivers\\chrome\\chromedriver.exe");
 			WebDriverManager.chromedriver().setup();
-			tlDriver.set(new ChromeDriver());
+			tlDriver.set(new ChromeDriver(optionsmanager.getChromeOptions()));
 			
 			//driver = new ChromeDriver();
 			
 		}
 		else if(browserName.equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
-			tlDriver.set(new FirefoxDriver());
+			tlDriver.set(new FirefoxDriver(optionsmanager.getFirefoxOptions()));
 			//System.setProperty("webdriver.gecko.driver", "D:\\MukeshAutomation\\drivers\\geckodriver.exe");
 			//driver = new FirefoxDriver();
 			
@@ -91,7 +94,36 @@ public class BasePage {
 	 */
 	public Properties initilize_prop() {
 		prop = new Properties();
+		String path = null;
+		String env = null;
+		
 		try {
+			env = System.getProperty("env");
+			System.out.println(" enviornment value  is ---->" + env);
+			
+			if(env == null) {
+				path = ".\\src\\main\\java\\com\\qa\\orangehrm\\config\\config.properties";	
+			}
+			else {
+				switch(env) {
+				
+				case "qa":
+					path = ".\\src\\main\\java\\com\\qa\\orangehrm\\config\\qa.config.properties";	
+				break;
+				
+				case "stg":
+					path = ".\\src\\main\\java\\com\\qa\\orangehrm\\config\\stg.config.properties";	
+					break;
+					
+				case "dev":
+					path = ".\\src\\main\\java\\com\\qa\\orangehrm\\config\\dev.config.properties";	
+					break;
+				default:
+					System.out.println(" please enter valid enev value -->" + env);
+					break;
+					
+				}
+			}
 			FileInputStream fip = new FileInputStream(".\\src\\main\\java\\com\\qa\\orangehrm\\config\\config.properties");
 			prop.load(fip);
 			
