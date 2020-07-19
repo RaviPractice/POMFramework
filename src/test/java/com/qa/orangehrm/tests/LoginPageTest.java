@@ -16,9 +16,9 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 
-//@Listeners(ExtentReportListener.class)
+@Listeners(ExtentReportListener.class)
 //@Listeners(TestAllureListener.class)
-@Listeners(TesultsListener.class)
+//@Listeners(TesultsListener.class)
 @Epic("Epic - 101 : design loginpage with different features")
 @Story("US - 102 : design basic login page with signup,title,login..")
 public class LoginPageTest extends BaseTest {
