@@ -5,8 +5,8 @@
 	<suite name="Orange HRM Regression Suite" verbose="3">
 	
 	 <listeners>
-		<!--  <listener class-name="com.qa.orangehrm.listeners.ExtentReportListener" /> --> 
-		  <listener class-name="com.qa.orangehrm.listeners.TestAlluretListener" /> 
+		 <listener class-name="com.qa.orangehrm.listeners.ExtentReportListener" /> 
+		<!--  <listener class-name="com.qa.orangehrm.listeners.TestAlluretListener" /> -->
 		 
 	</listeners> 
 	
